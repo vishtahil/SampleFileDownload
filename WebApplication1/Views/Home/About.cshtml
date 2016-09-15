@@ -5,3 +5,19 @@
 <h3>@ViewBag.Message</h3>
 
 <p>Use this area to provide additional information.</p>
+<a class="btn btn-default" onclick="downloadFile('@Url.Action("Download", "Home")?file=SampleExcel.xlsx');">Download File</a>
+<script type="text/javascript">
+    function downloadFile(url) {
+        var iframe;
+        iframe = document.getElementById("hiddenDownloader");
+        if (iframe == null) {
+            iframe = document.createElement('iframe');
+            iframe.id = "hiddenDownloader";
+            iframe.style.visibility = 'none';
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+        }
+        iframe.src = url;
+        return false;
+    }
+</script>

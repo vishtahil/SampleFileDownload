@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -18,6 +19,13 @@ namespace WebApplication1.Controllers
             ViewBag.Message = "Your application description page.";
 
             return View();
+        }
+
+        [HttpGet]
+        public virtual ActionResult Download(string file)
+        {
+            string fullPath = Path.Combine(Server.MapPath("~"), file);
+            return File(fullPath, "application/vnd.ms-excel", file);
         }
 
         public ActionResult Contact()
